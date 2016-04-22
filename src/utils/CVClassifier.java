@@ -13,7 +13,6 @@ import java.util.ArrayList;
  */
 public class CVClassifier {
 
-    public ArrayList candidates = new ArrayList();
     public ArrayList senior = new ArrayList();
     public ArrayList middle = new ArrayList<>();
     public ArrayList junior = new ArrayList<>();
@@ -45,60 +44,47 @@ public class CVClassifier {
         int candExp = cvParser.cvExperience();
         String candSkills = cvParser.cvSkills();
 
+
         //Senior selection criteria
         if (candExp>=5&candSkills.equals("HTML, JavaScript, SQL")){
-
-            Senior seniorCand = new Senior(candName,candExp);
-
-//            System.out.println(seniorCand.getExperience());
-//            System.out.println(seniorCand.getName());
-//            System.out.println(seniorCand.getCandType());
-
-            candidates.add(seniorCand);
-            senior.add(seniorCand);
+            createSenior(candName,candExp);
+//            System.out.println(candEducation);
 
         }
 
         //Middle selection criteria
         if (candExp>=2&candExp<5&candSkills.equals("HTML, JavaScript, SQL")){
-
-            Middle middleCand = new Middle(candName,candExp);
-
-//            System.out.println(middleCand.getName());
-//            System.out.println(middleCand.getExperience());
-//            System.out.println(middleCand.getCandType());
-
-            candidates.add(middleCand);
-            middle.add(middleCand);
-
+            createMiddle(candName,candExp);
         }
 
         //Junior selection criteria
         if (candSkills.equals("HTML, SQL")||candExp<2){
-
-            Junior juniorCand = new Junior(candName,candExp);
-
-//            System.out.println(juniorCand.getName());
-//            System.out.println(juniorCand.getExperience());
-//            System.out.println(juniorCand.getCandType());
-
-            candidates.add(juniorCand);
-            junior.add(juniorCand);
-
+            createJunior(candName,candExp);
         }
 
         //Student selection criteria
         if (candSkills.equals("HTML")){
-
-            Student studentCand = new Student(candName,candExp);
-
-//            System.out.println(studentCand.getName());
-//            System.out.println(studentCand.getExperience());
-//            System.out.println(studentCand.getCandType());
-
-            candidates.add(studentCand);
-            student.add(studentCand);
-
+            createStudent(candName,candExp);
         }
+    }
+    public ArrayList createSenior(String candName, int candExp){
+        Senior seniorCand = new Senior(candName,candExp);
+        senior.add(seniorCand);
+        return senior;
+    }
+    public ArrayList createMiddle(String candName, int candExp){
+        Middle middleCand = new Middle(candName,candExp);
+        middle.add(middleCand);
+        return middle;
+    }
+    public ArrayList createJunior(String candName, int candExp){
+        Junior juniorCand = new Junior(candName,candExp);
+        junior.add(juniorCand);
+        return junior;
+    }
+    public ArrayList createStudent(String candName, int candExp){
+        Student studentCand = new Student(candName,candExp);
+        student.add(studentCand);
+        return student;
     }
 }

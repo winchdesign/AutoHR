@@ -13,7 +13,7 @@ public class CVParser {
 
     public CVParser(String fileLocation) throws IOException {
 
-        /** Classloader for reading file from resources*/
+        /** Classloader for reading file from the resources*/
 
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         File file = new File(classloader.getResource(fileLocation).getFile());
@@ -40,6 +40,20 @@ public class CVParser {
         }
         return name;
     }
+
+//    public int cvEducation () {
+//        int education = 0;
+//        for (arrLine = 0; arrLine < lineCount; arrLine++) {
+//            line = cvFields[arrLine][0];
+//
+//            if (line.equals("education")) {
+//                String exp = cvFields[arrLine][1];
+//                education = Integer.parseInt(exp.substring(0, exp.indexOf(" ")));
+//
+//            }
+//        }
+//        return education;
+//    }
 
     public int cvExperience(){
         int experience=0;
